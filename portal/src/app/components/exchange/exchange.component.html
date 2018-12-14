@@ -1,0 +1,42 @@
+<div class="exchange-container">
+  <div>
+    <h1>Welcome to Crypto Tracker!</h1>
+    <p>You can use this application to compare the price of exchange between different crypto currencies on different exchanges.
+      For now you can see prices on BNB, BTX, and BFX exchanges. You will find the highest price highlighted in green while the lowest is in red. 
+    </p>
+  </div>
+
+  <div>
+    <h5>SELECT PRODUCT:</h5>
+    <mat-form-field>
+      <mat-select [formControl]="productCtrl" placeholder="Product">
+        <ngx-mat-select-search [formControl]="productFilterCtrl" placeholder="Search"></ngx-mat-select-search>
+        <mat-option *ngFor="let product of filteredProducts" [value]="product">
+          {{product}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-card class="price" [ngClass]="{high: isHighest(0), low: isLowest(0)}">
+        <mat-card-title> BNB </mat-card-title>
+        <mat-card-content *ngIf="productPrices[0]"> {{ productPrices[0] }}	</mat-card-content>
+        <mat-card-content *ngIf="!productPrices[0]"> --	</mat-card-content>
+    </mat-card>
+    <mat-card class="price" [ngClass]="{high: isHighest(1), low: isLowest(1)}">
+        <mat-card-title> BTX </mat-card-title>
+        <mat-card-content *ngIf="productPrices[1]"> {{ productPrices[1] }}	</mat-card-content>
+        <mat-card-content *ngIf="!productPrices[1]"> --	</mat-card-content>
+    </mat-card>
+    <mat-card class="price" [ngClass]="{high: isHighest(2), low: isLowest(2)}">
+        <mat-card-title> BFX </mat-card-title>
+        <mat-card-content *ngIf="productPrices[2]"> {{ productPrices[2] }}	</mat-card-content>
+        <mat-card-content *ngIf="!productPrices[2]"> --	</mat-card-content>
+    </mat-card>
+  </div>
+  
+  <div>
+    <p class="footer">Thank you for using Crypto Tracker!</p>
+  </div>
+</div>

@@ -2,3 +2,66 @@
 
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+
+.container, .container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 13px;
+  padding-right: 13px
+}
+
+.mat-card.layout {
+  margin: 100px;
+  background-color: #F5F5F5;
+}
+
+.exchange-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+
+p {
+  color: grey;
+}
+
+h1 {
+  text-align: center;
+}
+
+h5 {
+  margin-top: 60px;
+  margin-bottom: 10px;
+  color: darkgrey;
+}
+
+.mat-card.price {    
+  display: inline-block;
+  min-width: 200px;
+  min-height: 75px;
+  margin: 15px;
+  text-align: center;
+}
+
+.mat-card.price.high {    
+  background-color: #8fff8f;
+}
+
+.mat-card.price.low {    
+  background-color: #ff7c7c;
+}
+
+.mat-card.price .mat-card-title {
+  color: #737171;
+}
+
+.mat-card.price .mat-card-content {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.footer {
+  margin-top: 50px;
+  font-size: 15px;
+}

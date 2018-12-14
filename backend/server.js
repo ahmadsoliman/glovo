@@ -41,6 +41,15 @@ router.route('/products').get((req, res) => {
 
 });
 
+router.route('/products/:product/prices').get((req, res) => {
+  
+  async.map(exchanges, moneedaHttpGetPrice(req.params.product), function (err, prices){
+    if (err) return console.log(err);
+
+    res.json(prices.map(price => price.price));    
+  });
+
+});
 
 // helper function gets all products on an exchange
 function moneedaHttpGetProducts(exchange, callback) {
@@ -56,4 +65,23 @@ function moneedaHttpGetProducts(exchange, callback) {
       callback(err, body);
     }
   );
+}
+
+// helper function gets the price of a product on an exchange
+function moneedaHttpGetPrice(product) {
+  return (exchange, callback) => {
+    const options = {
+      url : config.baseUrl + exchange + '/ticker?product=' + product,
+      json : true,
+      auth : {
+        'bearer': config.authToken
+      }
+    };
+    request(options,
+      function(err, res, body) {
+        callback(err, body);
+      }
+    );
+  }
+  
 }
